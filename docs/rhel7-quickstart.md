@@ -1,5 +1,23 @@
 ## Quick Start for RHEL, CentOS, and Rocky Linux version 7
 
+#### Upgrade git
+Add this repo if you can use precompiled packages...
+````
+sudo yum -y install https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.7-1.x86_64.rpm
+````
+Otherwise make your own updated version from source...
+````
+yum update -y
+yum install wget which zlib-devel perl-devel -y
+wget https://github.com/git/git/archive/v2.26.2.tar.gz -O /tmp/git.tar.gz
+cd /tmp && tar -zxf git.tar.gz
+cd /tmp/git-2.26.2
+make configure
+# ./configure # to overwrite your existing git and YUM managed git locations
+./configure --prefix=/usr/local # standard way
+make install
+````
+
 #### Install Warewulf and dependencies
 ```
 sudo yum install epel-release
